@@ -1,7 +1,4 @@
-import pygame 
-from sys import exit
-from time import sleep
-from random import randint
+import pygame, sys, time, random
 from pygame.locals import *
 
 # SCREEN WIDTH AND HEIGHT AND FPS
@@ -153,12 +150,12 @@ class Zombies(Player): # USING CLASS VARIABLE roomTopWall AND TALK METHOD FROM C
     def __init__(self):
         self.WIDTH, self.HEIGHT = int(scr_wid/32), int(scr_hei/18)
         self.speed = scr_wid/91
-        self.x, self.y = randint(int(scr_wid/6.5), scr_wid - self.WIDTH - door_image.get_rect().width), randint(int(self.roomTopWall), scr_hei - self.HEIGHT)
+        self.x, self.y = random.randint(int(scr_wid/6.5), scr_wid - self.WIDTH - door_image.get_rect().width), random.randint(int(self.roomTopWall), scr_hei - self.HEIGHT)
         self.zombieRect = pygame.Rect(self.x, self.y, self.WIDTH, self.HEIGHT)
 
     def movement(self):
         # MOVES ZOMBIE BASED ON RANDOMNESS 
-        randomMovement = randint(1,300)
+        randomMovement = random.randint(1,300)
         if randomMovement == 1:
             if self.y > self.roomTopWall:
                 self.y -= self.speed
@@ -217,16 +214,16 @@ def menu():
                 if event.type == pygame.MOUSEBUTTONUP:
                     if event.button == 1:
                         pygame.quit()
-                        exit()
+                        sys.exit()
 
             # CHECKS IF PLAY HAS EXITED (ESCAPE KEY EXITS)
             elif event.type == KEYUP:
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
-                    exit()
+                    sys.exit()
             elif event.type == pygame.QUIT:
                 pygame.quit()
-                exit()
+                sys.exit()
 
         # SCREEN GETS UPDATED AT FPS SPEED
         pygame.display.update()
@@ -255,10 +252,10 @@ def intro(name):
         mouseXY = pygame.mouse.get_pos()
 
         # RANDOM ZOMBIE AUDIO
-        randomZombieSound = randint(1,1200)
+        randomZombieSound = random.randint(1,1200)
         if randomZombieSound == 1:
             zombie_sound.play(0)
-        randomZombieSound2 = randint(1,1200)
+        randomZombieSound2 = random.randint(1,1200)
         if randomZombieSound2 == 2:
             zombie_sound2.play(0)
 
@@ -277,10 +274,10 @@ def intro(name):
             if event.type == KEYUP:
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
-                    exit()
+                    sys.exit()
             if event.type == pygame.QUIT:
                 pygame.quit()
-                exit()
+                sys.exit()
 
         # SCREEN GETS UPDATED AT FPS SPEED
         pygame.display.update()
@@ -304,7 +301,7 @@ def roomWithZombies():
     # INSTANCES (RANDOM AMOUNT)
     player = Player("player")
     zombies = []
-    for amount in range(randint(20,25)):
+    for amount in range(random.randint(20,25)):
         zombies.append(Zombies())
 
     # TALK METHOD (ZOMBIE DERIVES IT FROM PLAYER CLASS)
@@ -324,16 +321,16 @@ def roomWithZombies():
     doorRect = pygame.Rect(scr_wid - door_image.get_rect().width/2, scr_hei/6, door_image.get_rect().width, door_image.get_rect().height/2)
     while True:
         # RANDOM ZOMBIE AUDIO
-        randomZombieSound = randint(1,800)
+        randomZombieSound = random.randint(1,800)
         if randomZombieSound == 1:
             zombie_sound.play(0)
-        randomZombieSound2 = randint(1,800)
+        randomZombieSound2 = random.randint(1,800)
         if randomZombieSound2 == 1:
             zombie_sound2.play(0)
-        randomZombieSound3 = randint(1,800)
+        randomZombieSound3 = random.randint(1,800)
         if randomZombieSound3 == 1:
             zombie_sound3.play(0)
-        randomZombieSound4 = randint(1,800)
+        randomZombieSound4 = random.randint(1,800)
         if randomZombieSound4 == 1:
             zombie_sound4.play(0)
 
@@ -370,7 +367,7 @@ def roomWithZombies():
             zombie_sound3.set_volume(0)
             zombie_sound4.set_volume(0)
             door_sound.play(0)
-            sleep(1.0)
+            time.sleep(1.0)
             return "Outside"
         
         # PLAYER DIES IF TIMER RUNS OUT
@@ -393,10 +390,10 @@ def roomWithZombies():
             if event.type == KEYUP:
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
-                    exit()
+                    sys.exit()
             elif event.type == pygame.QUIT:
                     pygame.quit()
-                    exit() 
+                    sys.exit() 
 
         # SCREEN GETS UPDATED AT FPS SPEED
         pygame.display.update() 
@@ -418,13 +415,13 @@ def outside():
     timer = 20
 
     # DERTMINES IF HELICOPTER OR GAS STATION LOOT SPAWNS ()
-    gasStationLoot = randint(1,2) # 50% CHANCE OF HAPPENING
+    gasStationLoot = random.randint(1,2) # 50% CHANCE OF HAPPENING
     gasStationInteracted = "no"
-    PoliceHeli = randint(1,4) # 75% CHANCE OF HAPPENING
+    PoliceHeli = random.randint(1,4) # 75% CHANCE OF HAPPENING
 
     # DAD SURVIVING CHANCE AND MIRACLE OF WINNING IF ALL GOES WRONG
-    dadSurvives = randint(1,10)# 90% CHANCE OF HAPPENING
-    miracle = randint(1,100) # 1% CHANCE OF HAPPENING
+    dadSurvives = random.randint(1,10)# 90% CHANCE OF HAPPENING
+    miracle = random.randint(1,100) # 1% CHANCE OF HAPPENING
             
     while True:
         keys = pygame.key.get_pressed()
@@ -457,14 +454,14 @@ def outside():
                         if gasStationLoot == 1:
                             timer += 10
                             interaction_sound.play(0)  
-                            sleep(2)
+                            time.sleep(2)
                             interactedOutcome = ArialFont.render("THERE WAS LOOT, 10 MINS ADDED", True, GREEN, GREY)
                             gasStationInteracted = "yes"
                             ding_sound.play(0)
                         if gasStationLoot == 2:
                             timer -= 5
                             interaction_sound.play(0)  
-                            sleep(2)
+                            time.sleep(2)
                             interactedOutcome = ArialFont.render("THERE WAS NO LOOT, 5 MINS WASTED", True, RED, GREY)
                             gasStationInteracted = "yes"
                             wrong_sound.play(0)
@@ -481,7 +478,7 @@ def outside():
             if timer >= 11:
                 airportPlane = 1
             elif timer <= 9:
-                airportPlane = randint(1,2)
+                airportPlane = random.randint(1,2)
 
             if keys[pygame.K_e] and airportPlane == 1:
                 interaction_sound.play(0)  
@@ -515,10 +512,10 @@ def outside():
             if event.type == KEYUP:
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
-                    exit()
+                    sys.exit()
             elif event.type == pygame.QUIT:
                     pygame.quit()
-                    exit() 
+                    sys.exit() 
 
         # SCREEN GETS UPDATED AT FPS SPEED
         pygame.display.update() 
@@ -554,7 +551,7 @@ def dead(cause = "Time Ran Out!"): # DEFAULT VALUE
     # DISPLAYS THE CAUSE OF DEATH AND SCREEN GETS UPDATED
     screen.blit(lost, (scr_wid/2 - lost.get_rect().width/2, scr_hei/2 - lost.get_rect().height/2))
     pygame.display.update()
-    sleep(4)
+    time.sleep(4)
 
 
 def victory(cause):
@@ -597,7 +594,7 @@ def victory(cause):
     victory_sound.play(0)
     screen.blit(won, (scr_wid/2 - won.get_rect().width/2, scr_hei/2 - won.get_rect().height/2))
     pygame.display.update() 
-    sleep(6)
+    time.sleep(6)
 
 
 def main():
