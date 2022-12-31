@@ -7,20 +7,20 @@ body {
     padding:0;
 }
 
-/* ::-webkit-scrollbar {
-    width: 50%;
+::-webkit-scrollbar {
+    width: 0.5rem;
     background: rgba(50, 50, 50, 0);
 }
 ::-webkit-scrollbar-thumb {
     background: rgb(220, 220, 220);
-    border-radius: 250%;
+    border-radius: 2rem;
 }
 ::-webkit-scrollbar-thumb:hover {
     background-color: rgb(165, 165, 165);
 }
 ::-webkit-scrollbar-thumb:active {
     background-color: rgb(110, 110, 110);
-} */
+}
 
 .menu li {
     list-style-type: none; 
