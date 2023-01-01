@@ -93,7 +93,9 @@ body {
 }
   
 
-
+.social-media-list li:hover {
+    background-color: rgb(145, 145, 145); 
+}
 
 
 
