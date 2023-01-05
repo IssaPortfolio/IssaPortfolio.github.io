@@ -61,11 +61,6 @@ body {
 }
 
 
-
-
-
-
-/* Social Media Icons */
 .social-media-list {
     position: relative;
     font-size: 7rem;
@@ -76,7 +71,7 @@ body {
 }
 
 .social-media-list li a {
-    color: rgb(255, 255, 255);
+    color: rgb(137, 211, 230);
 }
   
 .social-media-list li {
@@ -94,7 +89,7 @@ body {
   
 
 .social-media-list li:hover {
-    background-color: rgb(145, 145, 145); 
+    background-color: rgb(68, 90, 95); 
 }
 
 
