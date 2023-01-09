@@ -1,0 +1,5 @@
+Rent 850.55
+Food 200.00
+Car 500.00
+UtilityBills 300.55
+Subscriptions 65.00
