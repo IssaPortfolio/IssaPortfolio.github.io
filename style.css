@@ -1,10 +1,12 @@
+/* Base styles */
 body {
     background-color: rgb(34, 34, 34);
+    overflow-x: hidden;
 }
 
-*{
-    margin:0;
-    padding:0;
+* {
+    margin: 0;
+    padding: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -23,24 +25,25 @@ body {
     background-color: rgb(110, 110, 110);
 }
 
+.menu {
+    padding-right: 0.5rem;
+    display: flex;
+    justify-content: flex-end; /* Change to flex-end */
+    flex-wrap: wrap; /* Allow wrapping */
+}
+
 .menu li {
     list-style-type: none; 
     padding: 1rem;
     margin: 0.5rem;
 }
 
-.menu a{
+.menu a {
     color: rgb(235, 235, 235);
     font-size: 1rem;
 }
 
-.menu {
-    padding-right: 0.5rem;
-    display: flex;
-    justify-content: right;
-}
-
-.menu li:hover{
+.menu li:hover {
     background-color: rgb(114, 114, 114);
 }
 
@@ -60,9 +63,7 @@ body {
     border-radius: 0.5rem;
 }
 
-
 .social-media-list {
-    position: relative;
     font-size: 7rem;
     text-align: center;
     width: 100%;
@@ -73,9 +74,8 @@ body {
 .social-media-list li a {
     color: rgb(137, 211, 230);
 }
-  
+
 .social-media-list li {
-    position: relative; 
     display: inline-block;
     height: 7rem;
     width: 7rem;
@@ -86,40 +86,97 @@ body {
     cursor: pointer; 
     transition: all .2s ease-in-out;
 }
-  
 
 .social-media-list li:hover {
     background-color: rgb(68, 90, 95); 
 }
 
-
-
 .para {
     color: rgb(255, 255, 255);
     text-align: center;
-    width: 80rem;
-    margin: auto;
+    margin: 1rem auto; 
     font-size: 1.5rem;
-
+    max-width: 80%; 
+    width: auto; 
+    padding: 0 1rem; 
 }
+
 
 .images {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 1rem auto; /* Center images with spacing */
     filter: drop-shadow(6px 6px 10px);
     border-radius: 1.5rem;
+    max-width: 100%;
+    height: auto;
 }
 
 hr.rounded {
     border-top: 8px solid rgb(131, 131, 131);
-    margin:auto;
-    width: 80rem;
+    margin: 2rem auto; /* Center and add spacing */
+    width: 80%; /* Change width to a percentage */
     border-radius: 5rem;
 }
 
 a {
-    color:rgb(0, 183, 207);
-    text-decoration: None;
+    color: rgb(0, 183, 207);
+    text-decoration: none;
 }
 
+/* Media queries for responsiveness */
+@media (max-width: 1500px) {
+    .title {
+        font-size: 2.5rem;
+    }
+    .download {
+
+        font-size: 1.2rem;
+
+    }
+    .para {
+        font-size: 1.2rem;
+    }
+    hr.rounded {
+        width: 80%;
+    }
+}
+
+@media (max-width: 1100px) {
+    .title {
+        font-size: 2rem;
+    }
+    .download {
+        font-size: 1rem;
+    }
+    .para {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) { /* New breakpoint for tablets */
+    .menu {
+        flex-direction: column; /* Stack menu vertically */
+        align-items: center; /* Center items */
+    }
+    .title {
+        font-size: 1.8rem;
+    }
+    .download {
+        font-size: 0.9rem;
+    }
+    .para {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.5rem;
+    }
+    .download {
+        font-size: 0.8rem;
+    }
+    .para {
+        font-size: 0.8rem;
+    }
+}
