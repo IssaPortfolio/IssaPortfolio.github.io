@@ -33,7 +33,7 @@ body {
     display: flex;
     justify-content: flex-end;
     flex-wrap: wrap;
-    width: 100%; /* Ensure the menu takes up 100% of the container width */
+    width: 100%; 
 }
 
 .menu li {
