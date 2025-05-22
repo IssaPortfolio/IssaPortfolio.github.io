@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/portfolio/static/css/main.7f21cd5e.css",
+    "main.js": "/portfolio/static/js/main.feeebcd1.js",
+    "static/media/Photo.jpg": "/portfolio/static/media/Photo.1dd08c37b14761351ef8.jpg",
+    "static/media/SmoothJourney6.png": "/portfolio/static/media/SmoothJourney6.1e683d841819b7ce54fa.png",
+    "static/media/SmoothJourney5.png": "/portfolio/static/media/SmoothJourney5.836af560e41d2cb9616a.png",
+    "static/media/SmoothJourney4.png": "/portfolio/static/media/SmoothJourney4.0c318d9ac60f418ba58e.png",
+    "static/media/SmoothJourney3.png": "/portfolio/static/media/SmoothJourney3.9d2cb5674642a340abeb.png",
+    "static/media/SmoothJourney1.png": "/portfolio/static/media/SmoothJourney1.f22df4f261cd1924bfb5.png",
+    "static/media/PollApp1.png": "/portfolio/static/media/PollApp1.846c46028198aec01182.png",
+    "static/media/PollApp3.png": "/portfolio/static/media/PollApp3.6638af22c1aa4e8f5336.png",
+    "static/media/SmoothJourney7.jpeg": "/portfolio/static/media/SmoothJourney7.55c140819a50b788509f.jpeg",
+    "static/media/SmoothJourney9.jpeg": "/portfolio/static/media/SmoothJourney9.d4776d51fbc5974cce89.jpeg",
+    "static/media/SmoothJourney2.png": "/portfolio/static/media/SmoothJourney2.e95d393f13d145be49bc.png",
+    "static/media/PollApp2.png": "/portfolio/static/media/PollApp2.c318d0af54a23c8e0903.png",
+    "static/media/EmployeeTracker1.png": "/portfolio/static/media/EmployeeTracker1.173016c1647d2c4ad347.png",
+    "static/media/TCMWA.png": "/portfolio/static/media/TCMWA.61f2e442ffb18821042b.png",
+    "static/media/SmoothJourney8.jpg": "/portfolio/static/media/SmoothJourney8.f098d7d74b88117d72ec.jpg",
+    "static/media/PollApp4.png": "/portfolio/static/media/PollApp4.73f2d4da1331ce743cdb.png",
+    "static/media/EmployeeTracker5.png": "/portfolio/static/media/EmployeeTracker5.274c11cb0612be4ab79f.png",
+    "static/media/EmployeeTracker4.png": "/portfolio/static/media/EmployeeTracker4.cf435719ff7b17c99762.png",
+    "static/media/EmployeeTracker3.png": "/portfolio/static/media/EmployeeTracker3.82bf68fb0a75b46ad5c3.png",
+    "static/media/EmployeeTracker6.png": "/portfolio/static/media/EmployeeTracker6.ae76e0f12d1acc2314a2.png",
+    "index.html": "/portfolio/index.html",
+    "main.7f21cd5e.css.map": "/portfolio/static/css/main.7f21cd5e.css.map",
+    "main.feeebcd1.js.map": "/portfolio/static/js/main.feeebcd1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7f21cd5e.css",
+    "static/js/main.feeebcd1.js"
+  ]
+}

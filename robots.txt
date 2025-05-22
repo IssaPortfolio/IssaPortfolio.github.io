@@ -1,0 +1,7 @@
+# https://www.robotstxt.org/robotstxt.html
+# Prevent bots from accessing sensitive information
+User-agent: *
+Disallow: /assets/
+Disallow: /src/
+Disallow: /components/
+Disallow: /pages/
