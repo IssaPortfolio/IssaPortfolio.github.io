@@ -6,13 +6,17 @@ const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    // Initialize theme based on saved preference or device settings
+    // Initialize theme based on saved preference or default to light mode
     const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    if (savedTheme === 'dark') {
       setIsDark(true);
       document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      // Default to light mode
+      setIsDark(false);
+      document.documentElement.setAttribute('data-theme', 'light');
+      if (!savedTheme) localStorage.setItem('theme', 'light');
     }
   }, []);
 
