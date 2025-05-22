@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiGlobe, FiImage, FiGithub } from 'react-icons/fi';
 import { FaMobileAlt } from 'react-icons/fa';
@@ -108,70 +108,6 @@ const ProjectsPage = () => {
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [currentProject, setCurrentProject] = useState(null);
   const location = useLocation();
-  
-  // Handle scrolling to specific project when URL has hash
-  useEffect(() => {
-    if (location.hash) {
-      setTimeout(() => {
-        // Convert hash to lowercase for case-insensitive matching
-        const hash = location.hash.substring(1).toLowerCase();
-        
-        // Try direct ID match first
-        let element = document.getElementById(hash);
-        
-        // If no direct match, try different formats
-        if (!element) {
-          const matchingProject = projects.find(project => {
-            const projectTitle = project.title.toLowerCase();
-            return projectTitle === hash || 
-                   projectTitle.replace(/\s+/g, '') === hash || 
-                   projectTitle.replace(/\s+/g, '-') === hash ||
-                   hash.includes(projectTitle);
-          });
-          
-          if (matchingProject) {
-            // Create a valid ID from the project title
-            const projectId = matchingProject.title.replace(/\s+/g, '-').toLowerCase();
-            element = document.getElementById(projectId);
-          } else {
-            // If still no match, try to find by partial match
-            for (const project of projects) {
-              const projectId = project.title.replace(/\s+/g, '-').toLowerCase();
-              const el = document.getElementById(projectId);
-              
-              if (el && (projectId.includes(hash) || hash.includes(projectId.replace(/-/g, '')))) {
-                element = el;
-                break;
-              }
-            }
-          }
-        }
-        
-        // If we found an element, scroll to it
-        if (element) {
-          // Add offset to account for navbar height
-          const navbarHeight = 80;
-          const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-          
-          window.scrollTo({
-            top: elementPosition - navbarHeight - 50,
-            behavior: 'smooth'
-          });
-          
-          // Apply highlight effect to draw attention
-          element.style.transition = 'all 0.5s ease';
-          element.style.boxShadow = '0 0 20px rgba(var(--primary-rgb), 0.5)';
-          setTimeout(() => {
-            element.style.boxShadow = '';
-          }, 1500);
-          element.classList.add('highlight-project');
-          setTimeout(() => {
-            element.classList.remove('highlight-project');
-          }, 2000);
-        }
-      }, 1500); // Allow time for animations to complete
-    }
-  }, [location, projects]);
   
   const openGallery = (project) => {
     setCurrentProject(project);

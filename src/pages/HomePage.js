@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { FiCode, FiDatabase, FiServer, FiLayers, FiGithub, FiLinkedin, FiMail, FiBriefcase, FiGlobe } from 'react-icons/fi';
 import { FaGraduationCap, FaLaptopCode, FaAward, FaMapMarkerAlt, FaCalendarAlt } from 'react-icons/fa';
 import TechIcon from '../components/TechIcon';
@@ -34,8 +35,8 @@ const HomePage = () => {
                   Strong foundation in fullstack development, object-oriented programming, and data-driven applications, including data structures and algorithms. Experienced in deploying scalable, cloud-based solutions on AWS and Google Cloud with robust documentation and testing. Collaborative team player skilled at driving projects from concept to production.
                 </p>
                 <div className="cta-buttons">
-                  <a href="/projects" className="btn btn-primary">View My Work</a>
-                  <a href="/contact" className="btn btn-outline">Contact Me</a>
+                  <Link to="/projects" className="btn btn-primary">View My Work</Link>
+                  <Link to="/contact" className="btn btn-outline">Contact Me</Link>
                 </div>
                 
                 <div className="social-links">
@@ -289,8 +290,8 @@ const HomePage = () => {
                 <TechIcon name="AWS S3" />
               </div>
               <div className="project-links">
-                <a href="/projects#pollapp" className="btn btn-sm btn-primary">Learn More</a>
-                <a href="https://github.com/IssaPortfolio/Employee-Tracker" target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-outline">
+                <Link to="/projects" className="btn btn-sm btn-primary">Learn More</Link>
+                <a href="https://github.com/IssaPortfolio/Poll-App" target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-outline">
                   <FiGithub style={{ marginRight: '0.5rem', verticalAlign: 'middle' }} /> GitHub
                 </a>
               </div>
@@ -323,7 +324,7 @@ const HomePage = () => {
                 <TechIcon name="CSS3" />
               </div>
               <div className="project-links">
-                <a href="/projects#employee-tracker" className="btn btn-sm btn-primary">Learn More</a>
+                <Link to="/projects" className="btn btn-sm btn-primary">Learn More</Link>
                 <a href="https://github.com/IssaPortfolio/Employee-Tracker" target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-outline">
                   <FiGithub style={{ marginRight: '0.5rem', verticalAlign: 'middle' }} /> GitHub
                 </a>
@@ -332,7 +333,7 @@ const HomePage = () => {
           </div>
           
           <div className="see-more-container" style={{ textAlign: 'center', marginTop: '30px' }}>
-            <a href="/projects" className="btn btn-primary">See More</a>
+            <Link to="/projects" className="btn btn-primary">See More</Link>
           </div>
         </div>
       </section>
