@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background with gradient -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#1E40AF" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Rounded square background -->
+  <rect width="512" height="512" rx="80" fill="url(#bg-gradient)" />
+  
+  <!-- Portfolio briefcase icon -->
+  <path d="M140 180 H372 C392 180 408 196 408 216 V372 C408 392 392 408 372 408 H140 C120 408 104 392 104 372 V216 C104 196 120 180 140 180 Z" fill="#FFFFFF" opacity="0.95" />
+  
+  <!-- Briefcase handle -->
+  <path d="M200 180 V140 C200 120 216 104 236 104 H276 C296 104 312 120 312 140 V180" fill="none" stroke="#FFFFFF" stroke-width="24" stroke-linecap="round" />
+  
+  <!-- Document inside briefcase -->
+  <rect x="180" y="230" width="152" height="130" rx="8" fill="url(#bg-gradient)" />
+  
+  <!-- Document lines -->
+  <rect x="200" y="250" width="112" height="10" rx="5" fill="#FFFFFF" opacity="0.8" />
+  <rect x="200" y="280" width="112" height="10" rx="5" fill="#FFFFFF" opacity="0.8" />
+  <rect x="200" y="310" width="112" height="10" rx="5" fill="#FFFFFF" opacity="0.8" />
+  <rect x="200" y="340" width="70" height="10" rx="5" fill="#FFFFFF" opacity="0.8" />
+</svg>

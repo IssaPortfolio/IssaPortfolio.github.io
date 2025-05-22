@@ -1,0 +1,44 @@
+/* Global image styling with consistent shadows for ALL images */
+img {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+/* Remove ALL backgrounds from containers */
+.profile-image,
+.project-image-container,
+.edu-image-container,
+.exp-image-container {
+  background: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Image hover effects */
+.project-image:hover,
+.edu-image:hover,
+.exp-image:hover {
+  transform: scale(1.03);
+  transition: transform 0.5s ease;
+}
+
+/* Special treatment for profile image */
+.profile-image img {
+  border-radius: 20px;
+}
+
+/* Special case: mobile image inside the phone mockup */
+.phone-mockup {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Exception for icons */
+.tech-icon img,
+svg,
+.card-icon,
+.tech-item svg,
+.social-links svg {
+  box-shadow: none !important;
+}

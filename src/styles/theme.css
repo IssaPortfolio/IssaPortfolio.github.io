@@ -1,0 +1,85 @@
+:root {
+  /* Light mode (default) */
+  --background: #f8f9fa;
+  --foreground: #212529;
+  --primary: #2563eb;
+  --primary-rgb: 37, 99, 235;
+  --secondary: #0284c7;
+  --accent: #38bdf8;
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --card-border: rgba(255, 255, 255, 0.2);
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  --navbar-bg: rgba(255, 255, 255, 0.85);
+  --navbar-fg: #212529;
+  --navbar-hover: #6d28d9;
+  --footer-bg: #f1f1f1;
+  --footer-fg: #555;
+}
+
+[data-theme="dark"] {
+  /* Dark mode */
+  --background: #121212;
+  --foreground: #e9ecef;
+  --primary: #3b82f6;
+  --primary-rgb: 59, 130, 246;
+  --secondary: #0ea5e9;
+  --accent: #60a5fa;
+  --card-bg: rgba(30, 30, 30, 0.7);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --card-shadow: rgba(0, 0, 0, 0.3);
+  --navbar-bg: rgba(25, 25, 25, 0.85);
+  --navbar-fg: #e9ecef;
+  --navbar-hover: #9f7aea;
+  --footer-bg: #1a1a1a;
+  --footer-fg: #aaa;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px var(--card-shadow);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px var(--card-shadow);
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-in;
+}
+
+.slide-up {
+  animation: slideUp 0.8s ease-out;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}

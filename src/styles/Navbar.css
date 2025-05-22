@@ -1,0 +1,232 @@
+/* Base navbar styling */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 56px;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 0.75rem 0;
+}
+
+/* We don't need separate scrolled styles anymore as the navbar will always have the glass effect */
+
+[data-theme="dark"] .navbar-container {
+  background: rgba(30, 30, 30, 0.75);
+  border: 1px solid rgba(60, 60, 60, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.6rem 1.5rem;
+  width: 100%;
+  position: relative;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--navbar-fg);
+}
+
+.logo span {
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  margin-left: 0.5rem;
+  color: var(--navbar-fg);
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+  background-color: rgba(var(--primary-rgb), 0.1);
+}
+
+.nav-links a.active {
+  color: var(--primary);
+  background-color: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  font-weight: 600;
+}
+
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 2rem;
+  height: 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 10;
+  margin-left: 1rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.mobile-toggle:hover {
+  background-color: rgba(var(--primary-rgb), 0.1);
+}
+
+.mobile-toggle span {
+  width: 100%;
+  height: 2px;
+  background-color: var(--navbar-fg);
+  transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  transform-origin: center;
+  border-radius: 4px;
+}
+
+.mobile-toggle.open span:first-child {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-toggle.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.mobile-toggle.open span:last-child {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Hamburger menu glass effect (background blur) */
+.nav-links.active, .nav-links.menu-open, .mobile-menu-glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Ensure menu content is above blur */
+.nav-links.active * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Glass/frosted effect for mobile nav menu card */
+.mobile-nav-card, .nav-menu-glass, .nav-menu-card {
+  background: rgba(var(--background-rgb), 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.22);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 5rem;
+    right: -100%;
+    width: 80%;
+    max-width: 280px;
+    height: auto;
+    max-height: 80vh;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 2rem;
+    gap: 1.5rem;
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 5;
+    margin-right: 1rem;
+  }
+
+  .nav-links.active, .nav-links.menu-open, .mobile-menu-glass {
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  [data-theme="dark"] .nav-links,
+  [data-theme="dark"] .nav-links.active,
+  [data-theme="dark"] .nav-links.menu-open,
+  [data-theme="dark"] .mobile-menu-glass {
+    background: #333333 !important;
+     background-color: #333333 !important;
+     border-radius: 24px;
+     border: 1px solid rgba(60, 60, 60, 0.25);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-links a {
+    font-size: 1.1rem;
+    padding: 0.75rem 1.5rem;
+    width: 80%;
+    text-align: center;
+    margin: 0;
+    transform: translateX(50px);
+    opacity: 0;
+    transition: all 0.4s ease;
+  }
+  
+  .nav-links.active a {
+    transform: translateX(0);
+    opacity: 1;
+    transition-delay: 0.2s;
+  }
+  
+  .nav-links.active a:nth-child(2) {
+    transition-delay: 0.3s;
+  }
+  
+  .nav-links.active a:nth-child(3) {
+    transition-delay: 0.4s;
+  }
+
+  .mobile-toggle {
+    display: flex;
+  }
+}

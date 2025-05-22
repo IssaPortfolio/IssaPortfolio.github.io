@@ -1,0 +1,891 @@
+.home-page-container {
+  padding-top: 0;
+}
+
+/* Remove any top margin or padding that might be affecting the hero */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.section-padding {
+  padding: 5rem 0;
+}
+
+.hero {
+  min-height: 100vh; /* Changed from fixed height to min-height for better responsiveness */
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  margin-top: 0;
+  padding-top: 5.625rem; /* Increased to prevent navbar collision (90px -> 5.625rem) */
+  padding-bottom: 3rem; /* Added consistent bottom padding */
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto; /* Allow hero to adjust to content on mobile */
+    padding-top: 5rem; /* Adjusted to position hero section better (80px -> 5rem) */
+    padding-bottom: 2rem; /* Reduced bottom padding on mobile */
+  }
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem; /* Increased gap for better spacing */
+  }
+  .hero-card {
+    margin-top: 0; /* Removed inconsistent top margin */
+    margin-bottom: 1rem; /* Added consistent bottom margin */
+  }
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  right: -10%;
+  width: 40%;
+  height: 50%;
+  background: radial-gradient(circle, var(--primary) 0%, rgba(255,255,255,0) 70%);
+  opacity: 0.2;
+  filter: blur(1.875rem); /* 30px -> 1.875rem */
+  z-index: -1;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  left: -10%;
+  width: 40%;
+  height: 50%;
+  background: radial-gradient(circle, var(--secondary) 0%, rgba(255,255,255,0) 70%);
+  opacity: 0.15;
+  filter: blur(1.875rem); /* 30px -> 1.875rem */
+  z-index: -1;
+}
+
+.hero-container {
+  width: 100%;
+}
+
+/* Hero layout */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Make hero cards equal height */
+.hero-grid .glass-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0; /* Allow cards to shrink if needed */
+}
+
+/* Make featured project cards equal height */
+.featured-grid .project-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.featured-grid .project-image-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  max-height: none; /* Removed max-height to prevent image cropping */
+}
+
+.featured-grid.one-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .featured-grid.one-row {
+    grid-template-columns: 1fr;
+  }
+}
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+  gap: 2rem;
+  margin: 2.5rem 0;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.education-section .container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.education-section .container > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.education-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 992px) {
+  .education-section .container > div {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 50rem; /* 800px -> 50rem */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.profile-image {
+  width: 100%;
+  max-width: 100%; /* Changed to 100% to ensure it takes full width like other card images */
+  min-width: auto; /* Changed from fixed min-width to auto to prevent overflow on small screens */
+  height: auto;
+  background: none;
+  border: none;
+  padding: 0;
+  display: block;
+  margin: 0 auto;
+}
+
+.profile-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 1.25rem; /* 20px -> 1.25rem */
+  box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.25) !important; /* 10px 30px -> 0.625rem 1.875rem */
+}
+
+@media (max-width: 768px) {
+  .profile-image {
+    max-width: 37.5rem;
+    min-width: auto; /* Changed from fixed min-width to auto for better responsiveness */
+    margin: 1rem auto;
+  }
+}
+
+.profile-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center; /* Center flex items, including cta-buttons block */
+}
+
+.profile-text .title {
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.profile-text .social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.75rem; /* Reduced from 1.5rem to move social icons higher */
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.25rem;
+  color: var(--foreground);
+  background-color: rgba(145, 145, 145, 0.08);
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .social-links a {
+  background-color: rgba(70, 70, 70, 0.25);
+}
+
+.social-links a:hover {
+  color: var(--primary);
+  transform: translateY(-0.1875rem); /* -3px -> -0.1875rem */
+}
+
+.greeting {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--foreground);
+  display: flex;
+  justify-content: center;
+}
+
+.name {
+  display: block;
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.bio {
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem; /* Reduced from 1.5rem to move buttons higher */
+  justify-content: center;
+  flex-direction: row;
+}
+
+@media (max-width: 768px) {
+  .cta-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+  }
+  .cta-buttons .btn {
+    width: 100%;
+    padding: 0.8rem 1rem;
+  }
+}
+
+.cta-buttons .btn {
+  padding: 0.6rem 1.6rem;
+  min-width: 7.5rem; /* 120px -> 7.5rem */
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.project-links .btn,
+.project-card .btn {
+  background-color: var(--primary);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.project-links .btn:hover,
+.project-card .btn:hover {
+  transform: translateY(-0.1875rem); /* -3px -> -0.1875rem */
+  box-shadow: 0 0.25rem 0.75rem rgba(var(--primary-rgb), 0.25); /* 4px 12px -> 0.25rem 0.75rem */
+}
+
+.project-links .btn-outline,
+.project-card .btn-outline {
+  background-color: transparent;
+  color: var(--primary);
+  border: 0.0625rem solid rgba(59, 130, 246, 0.3); /* 1px -> 0.0625rem */
+}
+
+.project-links .btn-outline:hover,
+.project-card .btn-outline:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 0;
+}
+
+.hero-card {
+  margin-top: 0; /* Removed top margin to align cards horizontally */
+}
+
+.education-card,
+.skills-card {
+  padding: 2rem; /* Standardize padding */
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-icon {
+  font-size: 1.75rem;
+  color: var(--primary);
+}
+
+.card-header h3 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-bottom: 0;
+}
+
+.education-item {
+  margin-bottom: 1.5rem;
+}
+
+.education-item:last-child {
+  margin-bottom: 0;
+}
+
+.education-item h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.education-details {
+  margin-bottom: 0.25rem;
+}
+
+.education-meta {
+  font-size: 0.9rem;
+  color: var(--foreground);
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+
+.education-honor {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--foreground);
+  margin-bottom: 0.25rem;
+}
+
+.education-location {
+  font-size: 0.9rem;
+  color: var(--foreground);
+  margin: 0.5rem 0;
+}
+
+.education-honor svg {
+  color: var(--primary);
+}
+
+.skills-lists {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.skill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.skill-list h4 {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.skill-list-icon {
+  color: var(--primary);
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-left: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.tech-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  background-color: rgba(145, 145, 145, 0.08);
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .tech-item {
+  background-color: rgba(70, 70, 70, 0.25);
+}
+
+/* Don't override SVG icon colors */
+.tech-item svg {
+  font-size: 1rem;
+  /* Allow icons to show their native colors */
+  color: initial;
+}
+
+.tech-item:hover {
+  transform: translateY(-0.125rem); /* -2px -> -0.125rem */
+  box-shadow: 0 0.1875rem 0.5rem rgba(0, 0, 0, 0.05); /* 3px 8px -> 0.1875rem 0.5rem */
+}
+
+.card-icon-container {
+  width: 2.8125rem;
+  height: 2.8125rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(59, 130, 246, 0.1);
+  margin-right: 1rem;
+}
+
+.card-icon {
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+
+/* Education Section Styling */
+.education-container,
+.experience-container {
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.skills-container,
+.hero-card {
+  padding: 2rem 2rem 0.5rem; /* Further reduced bottom padding */
+  margin-bottom: 0.5rem;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.education-item {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 0.0625rem solid rgba(150, 150, 150, 0.1); /* 1px -> 0.0625rem */
+}
+
+.education-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.education-meta,
+.education-honor,
+.job-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--foreground);
+  opacity: 0.8;
+}
+
+.gpa {
+  font-weight: 600;
+  color: var(--primary);
+  opacity: 1;
+}
+
+.edu-image-container,
+.exp-image-container,
+.project-image-container {
+  margin-top: 1.5rem;
+  border-radius: 1rem; /* 16px -> 1rem */
+  overflow: hidden;
+  box-shadow: 0 0.3125rem 0.9375rem rgba(0, 0, 0, 0.2); /* 5px 15px -> 0.3125rem 0.9375rem */
+  min-width: 0; /* Allow shrinking */
+  max-width: 100%; /* Ensure it doesn't overflow flex parent */
+  position: relative;
+  display: inline-block; /* Make container fit the image size */
+  width: auto; /* Let the container size adapt to the image */
+}
+
+.edu-image,
+.exp-image,
+.project-image {
+  width: 100%;
+  max-width: 100%; /* Ensure image does not exceed its container */
+  height: auto;
+  object-fit: contain; /* Changed from cover to contain to prevent cropping */
+  transition: transform 0.5s ease;
+  display: block; /* Remove extra space below image if it's inline */
+}
+
+.edu-image-container:hover .edu-image,
+.exp-image-container:hover .exp-image,
+.project-image-container:hover .project-image {
+  transform: scale(1.03);
+}
+
+/* Experience Section Styling */
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.job-company {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.job-duties {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.job-duties li {
+  margin-bottom: 0.75rem;
+  position: relative;
+  line-height: 1.6;
+}
+
+.job-duties li::before {
+  content: "•";
+  position: absolute;
+  left: -1.5rem;
+  color: var(--primary);
+  font-size: 1.2rem;
+}
+
+.tech-used {
+  margin: 1.5rem 0;
+}
+
+.tech-used .label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+/* Projects Styling */
+.featured-projects {
+  padding: 4rem 0 5rem;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--foreground);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr)); /* 300px -> 18.75rem */
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.project-card {
+  padding: 1.5rem; /* Reduced padding */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden; /* Prevent internal content from expanding card */
+  min-width: 0; /* Cooperate with grid shrinking */
+  max-width: 100%; /* Ensure it doesn't grow beyond grid cell */
+}
+
+.project-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0; /* Allow shrinking */
+  max-width: 100%; /* Ensure it doesn't overflow flex parent */
+}
+
+.project-content h3 {
+  margin-bottom: 1rem;
+  color: var(--primary);
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.project-content p {
+  flex: 1;
+  margin-bottom: 1.5rem;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+  justify-content: center;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-sm {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.875rem;
+}
+
+.view-all-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .hero-grid {
+    grid-template-columns: 1fr 0.9fr; /* Adjust hero grid for slightly smaller screens */
+  }
+  .featured-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .education-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero {
+    padding-top: 6rem; /* Increased padding to prevent navbar collision */
+    min-height: auto; /* Allow hero to grow with content */
+    height: auto;
+    padding-bottom: 3rem;
+  }
+  .hero-grid {
+    grid-template-columns: 1fr; /* Stack hero cards */
+    gap: 2rem; /* Add spacing between cards */
+  }
+
+  .hero-card {
+    order: 1; /* Profile card first */
+    margin-bottom: 2rem; /* Add spacing between about me and skills cards */
+  }
+
+  .skills-container {
+    order: 2; /* Skills card second */
+  }
+
+  .profile-image {
+    width: 100%; /* Changed to 100% to ensure it takes full width */
+    height: auto; /* Changed to auto to maintain aspect ratio */
+    margin-bottom: 2rem; /* Reduced from 6rem for more consistent spacing */
+  }
+
+  .profile-text {
+    margin-top: 2rem;
+  }
+
+  .profile-text .title {
+    font-size: 1.3rem;
+  }
+
+  .section-padding,
+  .experience-section,
+  .education-section,
+  .featured-projects {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .featured-grid {
+    grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
+    gap: 1.5rem;
+  }
+
+  .education-grid,
+  .education-section .container > div { /* Ensure education items stack */
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .card-header h3 {
+    font-size: 1.3rem;
+  }
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 5rem; /* Consistent with earlier mobile breakpoint */
+    padding-bottom: 2rem; /* Consistent with earlier mobile breakpoint */
+  }
+  
+  .hero-card {
+    margin-bottom: 1.5rem; /* Standardized spacing between cards */
+  }
+
+  .hero-content {
+    padding: 1.5rem;
+  }
+
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-text .title {
+    font-size: 1.2rem;
+    margin-top: -1rem;
+  }
+
+  .bio {
+    font-size: 0.95rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: stretch; /* Make buttons full width of their container */
+  }
+
+  .cta-buttons .btn {
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem 1rem; /* Adjust padding for stacked buttons */
+  }
+
+  .card-header h3 {
+    font-size: 1.2rem;
+  }
+
+  .education-container,
+  .skills-container,
+  .hero-card,
+  .experience-container,
+  .featured-projects .glass-card {
+    padding: 2rem; /* Restore original padding */
+    box-sizing: border-box;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .job-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .job-header h4 {
+    font-size: 1.05rem;
+  }
+
+  .job-date {
+    font-size: 0.85rem;
+  }
+  .tech-stack {
+    margin-left: 0; /* Remove left margin for tech stack on small screens */
+  }
+  .skill-list h4 {
+    font-size: 0.95rem;
+  }
+  .skill-list-icon {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding-top: 5rem; /* Increased padding to prevent navbar collision */
+    padding-bottom: 1.5rem; /* Reduced padding for smallest screens */
+  }
+  .profile-image {
+    width: 100%; /* Changed to 100% to ensure it takes full width */
+    height: auto; /* Changed to auto to maintain aspect ratio */
+    margin-bottom: 1.5rem;
+    min-width: auto; /* Override the min-width to prevent overflow */
+  }
+  .profile-text {
+    margin-top: 1rem; /* Reduced from 2rem for more consistent spacing */
+  }
+  .profile-text .title {
+    font-size: 1.1rem;
+  }
+  .bio {
+    font-size: 0.9rem;
+  }
+  .section-title {
+    font-size: 1.4rem;
+  }
+  .card-header h3 {
+    font-size: 1.1rem;
+  }
+  .education-item h4, .job-header h4 {
+    font-size: 1rem;
+  }
+  .education-container,
+  .skills-container,
+  .hero-card,
+  .experience-container {
+    padding: 1rem;
+  }
+  .tech-item {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+  }
+  .tech-item svg {
+    font-size: 0.9rem;
+  }
+  .social-links a {
+    width: 2.1875rem; /* 35px -> 2.1875rem */
+    height: 2.1875rem; /* 35px -> 2.1875rem */
+    font-size: 1.1rem;
+  }
+}

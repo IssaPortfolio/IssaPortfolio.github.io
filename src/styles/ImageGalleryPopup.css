@@ -1,0 +1,606 @@
+.gallery-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 0;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(0.5rem);
+  -webkit-backdrop-filter: blur(0.5rem);
+  opacity: 0;
+  animation: gallery-backdrop-fade-in 0.35s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+.gallery-backdrop.gallery-closing {
+  animation: gallery-backdrop-fade-out 0.25s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+@keyframes gallery-backdrop-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes gallery-backdrop-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+[data-theme="dark"] .gallery-backdrop,
+.gallery-backdrop.light {
+  background: rgba(0, 0, 0, 0.85);
+}
+.gallery-backdrop.dark {
+  background: rgba(0, 0, 0, 0.98);
+}
+
+.gallery-content {
+  position: relative;
+  width: fit-content;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none;
+  padding-left: 0;
+  padding-right: 0;
+  align-items: center;
+  transform: translateY(32px) scale(0.98);
+  opacity: 0;
+  animation: gallery-content-pop-in 0.4s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+.gallery-content.gallery-closing {
+  animation: gallery-content-pop-out 0.3s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+@keyframes gallery-content-pop-in {
+  0% {
+    opacity: 0;
+    transform: translateY(32px) scale(0.98);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes gallery-content-pop-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(32px) scale(0.98);
+  }
+}
+
+.gallery-content.light,
+.gallery-content.dark {
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.gallery-content .gallery-close {
+  z-index: 20;
+  color: #111;
+}
+
+.gallery-content.dark .gallery-close {
+  color: #fff;
+}
+
+.gallery-content .gallery-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+/* Add horizontal padding for iPhone overlay */
+.gallery-content.iphone-overlay {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.gallery-close {
+  position: absolute;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.gallery-close.light {
+  background: transparent;
+  color: #111;
+  border: none;
+  top: 1rem;
+  right: 1rem;
+}
+.gallery-close.dark {
+  background: transparent;
+  color: #fff;
+  border: none;
+  top: 1rem;
+  right: 1rem;
+}
+
+.gallery-close,
+.gallery-close.light,
+.gallery-close.dark {
+  color: #e53935 !important; /* Red */
+}
+
+.gallery-close:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: scale(1.1);
+}
+
+.gallery-image-container {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  overflow: visible;
+}
+
+.gallery-image {
+  display: block;
+  max-width: 90vw;
+  max-height: 60vh;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  margin: 0 auto;
+  transition: box-shadow 0.3s cubic-bezier(0.4,0,0.2,1), filter 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+.gallery-thumbnails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;
+  padding: 1rem 0;
+  background: transparent;
+  gap: 1rem;
+  scrollbar-width: thin;
+}
+
+.gallery-thumbnails::-webkit-scrollbar {
+  height: 0.5rem;
+}
+
+.gallery-thumbnails::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+}
+
+.gallery-thumbnails::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 0.25rem;
+}
+
+.gallery-thumbnail {
+  flex: 0 0 auto;
+  height: 5rem;
+  width: auto;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: all 0.25s cubic-bezier(0.4,0,0.2,1), box-shadow 0.25s cubic-bezier(0.4,0,0.2,1);
+  border: 0.125rem solid transparent;
+  aspect-ratio: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.gallery-thumbnail:hover {
+  opacity: 0.9;
+}
+
+.gallery-thumbnail.active {
+  opacity: 1;
+  border-color: var(--primary);
+}
+
+.gallery-thumbnail img {
+  height: 100%;
+  width: auto;
+  max-width: 8rem;
+  object-fit: contain;
+  display: block;
+  background: transparent;
+}
+
+.gallery-mobile-controls {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.gallery-nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: #fff;
+  color: #111;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin: 0 0.5rem;
+  transition: background 0.2s;
+}
+
+.gallery-content.dark .gallery-nav-button {
+  background: #222;
+  color: #fff;
+}
+
+.gallery-nav-button:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.gallery-nav-button.prev {
+  left: 1rem;
+}
+
+.gallery-nav-button.next {
+  right: 1rem;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .gallery-content {
+    max-height: 95vh;
+  }
+  
+  .gallery-image-container {
+    height: 50vh;
+  }
+  
+  .gallery-thumbnails {
+    padding: 0.75rem;
+    margin-top: 4rem;
+  }
+  
+  .gallery-thumbnail {
+    width: 8rem;
+    height: 6rem;
+  }
+  
+  .gallery-mobile-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    width: 100%;
+  }
+  
+  .gallery-nav-button {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.25rem;
+  }
+}
+
+/* iPhone overlay for Smooth Journey */
+.phone-mockup {
+  position: relative;
+  width: 270px;
+  height: 560px;
+  background-color: transparent; /* Remove glass effect */
+  border-radius: 50px;
+  padding: 6px;
+  box-shadow: none; /* Remove shadow */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  border: 2px solid #7D7D7D; /* Keep subtle border for shape, optional */
+}
+
+.phone-screen {
+  flex: 1;
+  background-color: #000;
+  border-radius: 44px;
+  overflow: hidden;
+  position: relative;
+}
+
+.phone-screen::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 16px;
+  background-color: #000;
+  border-radius: 20px;
+  z-index: 10;
+  border: 1px solid #1D1D1F;
+}
+
+.mobile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  display: block;
+  position: relative;
+  transform: scale(1);
+  transform-origin: center center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.phone-screen::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 2px;
+  z-index: 10;
+}
+
+/* View Screenshots button */
+.view-screenshots-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  background-color: rgba(var(--primary-rgb), 0.1);
+  color: var(--primary);
+  font-weight: 500;
+  font-size: 0.9rem;
+  border: 1px solid rgba(var(--primary-rgb), 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-right: 0.5rem;
+}
+
+.view-screenshots-btn:hover {
+  background-color: rgba(var(--primary-rgb), 0.2);
+  transform: translateY(-0.125rem);
+}
+
+.view-screenshots-btn:active {
+  transform: translateY(0);
+}
+
+/* iPhone overlay for Smooth Journey in popup */
+.phone-mockup {
+  position: relative;
+  width: 270px;
+  height: 560px;
+  background-color: transparent; /* Remove glass effect */
+  border-radius: 50px;
+  padding: 6px;
+  box-shadow: none; /* Remove shadow */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  border: 2px solid #7D7D7D; /* Keep subtle border for shape, optional */
+}
+@media (max-width: 600px) {
+  .gallery-content.iphone-overlay {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .phone-mockup {
+    width: 180px;
+    height: 375px;
+  }
+}
+
+.gallery-close-rect {
+  background: #e53935;
+  color: #fff !important;
+  border: none;
+  border-radius: 0.75rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10001;
+  box-shadow: none;
+  transition: background 0.2s;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+}
+.gallery-close-rect span {
+  color: #fff !important;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.gallery-close-rect:hover {
+  background: #b71c1c;
+}
+
+.gallery-mobile-controls-rect {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem auto 0 auto;
+  background: #222;
+  border-radius: 1.5rem;
+  padding: 0.5rem 1.5rem;
+  gap: 1.5rem;
+  width: fit-content;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.gallery-nav-button-rect {
+  background: transparent;
+  color: #fff;
+  border: none;
+  border-radius: 0.75rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.gallery-nav-button-rect:hover {
+  background: #444;
+}
+
+@media (max-width: 600px) {
+  .gallery-mobile-controls-rect {
+    width: 90vw;
+    max-width: 350px;
+    padding: 0.5rem 0.5rem;
+    gap: 1rem;
+  }
+  .gallery-close-rect {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+}
+
+.gallery-thumbnails-desktop {
+  display: flex;
+}
+.gallery-mobile-controls-mobile {
+  display: none;
+}
+@media (max-width: 600px) {
+  .gallery-thumbnails-desktop {
+    display: none !important;
+  }
+  .gallery-mobile-controls-mobile {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem auto 0 auto;
+    background: #222;
+    border-radius: 1.5rem;
+    padding: 0.5rem 1.5rem;
+    gap: 1.5rem;
+    width: fit-content;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .gallery-close-rect {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+}
+
+/* Add styles for mobile navigation arrow buttons as rectangles with rounded corners, styled for light and dark mode. Center them below the image, and hide on desktop. Remove background from previous mobile controls. Ensure buttons are visually distinct and accessible. */
+.gallery-mobile-arrows {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .gallery-thumbnails-desktop {
+    display: none !important;
+  }
+  .gallery-mobile-arrows {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 5rem auto 0 auto; /* Increased margin to lower the controls */
+    width: 100%;
+  }
+}
+
+.gallery-arrow-btn {
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: #fff;
+  color: #222;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s, color 0.2s;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gallery-arrow-btn.dark {
+  background: #333;
+  color: #fff;
+}
+.gallery-arrow-btn.light {
+  background: #fff;
+  color: #222;
+}
+.gallery-arrow-btn:active, .gallery-arrow-btn:focus {
+  background: #e0e0e0;
+}
+.gallery-arrow-btn.dark:active, .gallery-arrow-btn.dark:focus {
+  background: #444;
+}
+
+/* Utility class to prevent instant removal during close animation */
+.gallery-popup-animating-out {
+  pointer-events: none;
+}

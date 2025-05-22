@@ -1,0 +1,105 @@
+.tech-icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0.3rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tech-icon:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tech-icon svg {
+  font-size: 1.1rem;
+  /* Remove margin-bottom since we're now in a row layout */
+}
+
+.tech-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Technology brand colors */
+.icon-react {
+  color: #61DAFB;
+}
+
+.icon-node {
+  color: #339933;
+}
+
+.icon-express {
+  color: #000000;
+}
+
+.icon-java {
+  color: #007396;
+}
+
+.icon-python {
+  color: #3776AB;
+}
+
+.icon-mysql {
+  color: #4479A1;
+}
+
+.icon-postgresql {
+  color: #336791;
+}
+
+.icon-html {
+  color: #E34F26;
+}
+
+.icon-css {
+  color: #1572B6;
+}
+
+.icon-js {
+  color: #F7DF1E;
+}
+
+.icon-bootstrap {
+  color: #7952B3;
+}
+
+.icon-swift, .icon-swiftui {
+  color: #F05138;
+}
+
+.icon-uikit {
+  color: #007AFF;
+}
+
+.icon-aws {
+  color: #FF9900;
+}
+
+.icon-tkinter {
+  color: #3E6E93;
+}
+
+.icon-jsp {
+  color: #007396;
+}
+
+.icon-mongodb {
+  color: #47A248;
+}
+
+.icon-vite {
+  color: #646CFF;
+}
+
+.icon-flask {
+  color: #000000;
+}
+
+.icon-postgis {
+  color: #336791;
+}

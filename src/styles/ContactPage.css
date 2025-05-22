@@ -1,0 +1,164 @@
+.contact-page {
+  padding-top: 0;
+}
+
+.contact-hero {
+  padding: 7rem 0 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-hero::before {
+  content: '';
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  width: 30%;
+  height: 50%;
+  background: radial-gradient(circle, var(--secondary) 0%, rgba(255,255,255,0) 70%);
+  opacity: 0.15;
+  filter: blur(40px);
+  z-index: -1;
+}
+
+.contact-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--foreground);
+}
+
+.contact-subtitle {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: var(--foreground);
+  opacity: 0.9;
+}
+
+.contact-content {
+  padding: 2rem 0 5rem;
+}
+
+.contact-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 2rem;
+}
+
+.contact-info,
+.contact-form-container {
+  padding: 2rem;
+}
+
+.contact-info h3,
+.contact-form-container h3 {
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+}
+
+.contact-info p {
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.contact-icon {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-top: 0.25rem;
+}
+
+.contact-item h4 {
+  margin-bottom: 0.25rem;
+  font-size: 1.1rem;
+}
+
+.contact-item p {
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+.contact-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.contact-option {
+  display: flex;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  gap: 1rem;
+  transition: all 0.3s ease;
+  border: 1px solid var(--card-border);
+}
+
+.contact-option:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary);
+}
+
+.option-icon {
+  font-size: 1.8rem;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.option-details {
+  flex: 1;
+}
+
+.option-details h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: var(--foreground);
+}
+
+.option-details p {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+
+
+@media (max-width: 992px) {
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-options {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-page {
+    padding-top: 5rem;
+  }
+  
+  .contact-hero {
+    padding: 3rem 0;
+  }
+  
+  .contact-title {
+    font-size: 2.25rem;
+  }
+}
