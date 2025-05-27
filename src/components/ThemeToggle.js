@@ -42,17 +42,13 @@ const ThemeToggle = () => {
     elementsToUpdate.forEach(el => {
       if (el) {
         // Remove any transition temporarily to force immediate update
-        const originalTransition = el.style.transition;
         el.style.transition = 'none';
         // Force a reflow
         void el.offsetHeight;
-        // Restore transition
-        setTimeout(() => {
-          el.style.transition = originalTransition;
-        }, 10);
+        // Do not restore transition
       }
     });
-    
+
     setTimeout(() => setAnimating(false), 300);
   };
 
