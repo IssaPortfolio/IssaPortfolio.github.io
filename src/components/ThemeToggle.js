@@ -26,11 +26,36 @@ const ThemeToggle = () => {
     setIsDark(!isDark);
     setAnimating(true);
     
-    // Force immediate theme application
+    // Apply theme change to all relevant elements immediately
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
     
-    setTimeout(() => setAnimating(false), 500);
+    // Apply theme-specific classes to key elements to force immediate update
+    const elementsToUpdate = [
+      document.querySelector('.navbar-container'),
+      document.querySelector('.mobile-toggle'),
+      document.querySelector('.theme-toggle'),
+      ...document.querySelectorAll('.glass-card'),
+      ...document.querySelectorAll('.nav-links')
+    ];
+    
+    elementsToUpdate.forEach(el => {
+      if (el) {
+        // Remove any transition temporarily to force immediate update
+        const originalTransition = el.style.transition;
+        el.style.transition = 'none';
+        
+        // Force a reflow
+        el.offsetHeight;
+        
+        // Restore transition
+        setTimeout(() => {
+          el.style.transition = originalTransition;
+        }, 10);
+      }
+    });
+    
+    setTimeout(() => setAnimating(false), 300);
   };
 
   return (
