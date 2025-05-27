@@ -4,6 +4,7 @@ import '../styles/ThemeToggle.css';
 
 const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(false);
+  const [animating, setAnimating] = useState(false);
 
   useEffect(() => {
     // Initialize theme based on saved preference or default to light mode
@@ -23,23 +24,21 @@ const ThemeToggle = () => {
   const toggleTheme = () => {
     const newTheme = isDark ? 'light' : 'dark';
     setIsDark(!isDark);
+    setAnimating(true);
     
     // Force immediate theme application
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
     
-    // Force a repaint to ensure all elements update immediately
-    document.body.style.display = 'none';
-    // Trigger reflow by accessing offsetHeight
-    void document.body.offsetHeight;
-    document.body.style.display = '';
+    setTimeout(() => setAnimating(false), 500);
   };
 
   return (
     <button 
-      className="theme-toggle" 
+      className={`theme-toggle${animating ? ' theme-animating' : ''}`} 
       onClick={toggleTheme}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      type="button"
     >
       {isDark ? <FiSun /> : <FiMoon />}
     </button>

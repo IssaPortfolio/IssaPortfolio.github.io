@@ -15,6 +15,9 @@
   --navbar-hover: #6d28d9;
   --footer-bg: #f1f1f1;
   --footer-fg: #555;
+  
+  /* Add smooth transition for theme changes */
+  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
 }
 
 [data-theme="dark"] {
