@@ -4,7 +4,6 @@ import '../styles/ThemeToggle.css';
 
 const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(false);
-  const [animating, setAnimating] = useState(false);
 
   useEffect(() => {
     // Initialize theme based on saved preference or default to light mode
@@ -24,40 +23,23 @@ const ThemeToggle = () => {
   const toggleTheme = () => {
     const newTheme = isDark ? 'light' : 'dark';
     setIsDark(!isDark);
-    setAnimating(true);
     
-    // Apply theme change to all relevant elements immediately
+    // Force immediate theme application
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
     
-    // Apply theme-specific classes to key elements to force immediate update
-    const elementsToUpdate = [
-      document.querySelector('.navbar-container'),
-      document.querySelector('.mobile-toggle'),
-      document.querySelector('.theme-toggle'),
-      ...document.querySelectorAll('.glass-card'),
-      ...document.querySelectorAll('.nav-links')
-    ];
-    
-    elementsToUpdate.forEach(el => {
-      if (el) {
-        // Remove any transition temporarily to force immediate update
-        el.style.transition = 'none';
-        // Force a reflow
-        void el.offsetHeight;
-        // Do not restore transition
-      }
-    });
-
-    setTimeout(() => setAnimating(false), 300);
+    // Force a repaint to ensure all elements update immediately
+    document.body.style.display = 'none';
+    // Trigger reflow by accessing offsetHeight
+    void document.body.offsetHeight;
+    document.body.style.display = '';
   };
 
   return (
     <button 
-      className={`theme-toggle${animating ? ' theme-animating' : ''}`} 
+      className="theme-toggle" 
       onClick={toggleTheme}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-      type="button"
     >
       {isDark ? <FiSun /> : <FiMoon />}
     </button>
