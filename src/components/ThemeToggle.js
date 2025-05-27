@@ -44,10 +44,8 @@ const ThemeToggle = () => {
         // Remove any transition temporarily to force immediate update
         const originalTransition = el.style.transition;
         el.style.transition = 'none';
-        
         // Force a reflow
-        el.offsetHeight;
-        
+        void el.offsetHeight;
         // Restore transition
         setTimeout(() => {
           el.style.transition = originalTransition;
