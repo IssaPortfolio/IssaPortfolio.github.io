@@ -290,7 +290,7 @@ const HomePage = () => {
                 <TechIcon name="AWS S3" />
               </div>
               <div className="project-links">
-                <Link to="/projects" className="btn btn-sm btn-primary">Learn More</Link>
+                <Link to="/projects#pollapp" className="btn btn-sm btn-primary">Learn More</Link>
                 <a href="https://github.com/IssaPortfolio/Poll-App" target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-outline">
                   <FiGithub style={{ marginRight: '0.5rem', verticalAlign: 'middle' }} /> GitHub
                 </a>
@@ -319,12 +319,11 @@ const HomePage = () => {
                 <TechIcon name="Python" />
                 <TechIcon name="Tkinter" />
                 <TechIcon name="Turtle" />
-                <TechIcon name="JSP" />
                 <TechIcon name="HTML5" />
                 <TechIcon name="CSS3" />
               </div>
               <div className="project-links">
-                <Link to="/projects" className="btn btn-sm btn-primary">Learn More</Link>
+                <Link to="/projects#employee-tracker" className="btn btn-sm btn-primary">Learn More</Link>
                 <a href="https://github.com/IssaPortfolio/Employee-Tracker" target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-outline">
                   <FiGithub style={{ marginRight: '0.5rem', verticalAlign: 'middle' }} /> GitHub
                 </a>

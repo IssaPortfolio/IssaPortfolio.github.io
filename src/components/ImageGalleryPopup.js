@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiX } from 'react-icons/fi';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+// Removed unused imports
 import '../styles/ImageGalleryPopup.css';
 
 const ImageGalleryPopup = ({ isOpen, onClose, images, projectTitle, iphoneOverlay }) => {
@@ -21,22 +20,6 @@ const ImageGalleryPopup = ({ isOpen, onClose, images, projectTitle, iphoneOverla
     observer.observe(document.body, { attributes: true, attributeFilter: ['data-theme'] });
     return () => observer.disconnect();
   }, []);
-
-  // Handle keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape' && isOpen) {
-        handleClose();
-      } else if (e.key === 'ArrowLeft') {
-        navigateImages('prev');
-      } else if (e.key === 'ArrowRight') {
-        navigateImages('next');
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, onClose, currentIndex]);
 
   // Close gallery when clicking outside content area
   const handleBackdropClick = (e) => {
@@ -87,13 +70,23 @@ const ImageGalleryPopup = ({ isOpen, onClose, images, projectTitle, iphoneOverla
     }, 350); // Match animation duration
   }, [onClose]);
 
-  if (!isOpen || !images || images.length === 0) return null;
+  // Handle keyboard navigation (move after handleClose/navigateImages to avoid no-use-before-define)
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        handleClose();
+      } else if (e.key === 'ArrowLeft') {
+        navigateImages('prev');
+      } else if (e.key === 'ArrowRight') {
+        navigateImages('next');
+      }
+    };
 
-  // Set aspect ratio for proper layout
-  let aspectRatio = 1;
-  if (images && images.length > 0) {
-    aspectRatio = iphoneOverlay ? 270 / 560 : 16 / 9;
-  }
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, handleClose, navigateImages]);
+
+  if (!isOpen || !images || images.length === 0) return null;
 
   return (
     <AnimatePresence>

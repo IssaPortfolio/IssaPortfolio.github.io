@@ -1,6 +1,7 @@
 :root {
   /* Light mode (default) */
   --background: #f8f9fa;
+  --background-rgb: 248, 249, 250;
   --foreground: #212529;
   --primary: #2563eb;
   --primary-rgb: 37, 99, 235;
@@ -19,6 +20,7 @@
 [data-theme="dark"] {
   /* Dark mode */
   --background: #121212;
+  --background-rgb: 18, 18, 18;
   --foreground: #e9ecef;
   --primary: #3b82f6;
   --primary-rgb: 59, 130, 246;

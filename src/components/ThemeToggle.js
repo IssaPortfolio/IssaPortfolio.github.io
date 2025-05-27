@@ -23,8 +23,16 @@ const ThemeToggle = () => {
   const toggleTheme = () => {
     const newTheme = isDark ? 'light' : 'dark';
     setIsDark(!isDark);
+    
+    // Force immediate theme application
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
+    
+    // Force a repaint to ensure all elements update immediately
+    document.body.style.display = 'none';
+    // Trigger reflow by accessing offsetHeight
+    void document.body.offsetHeight;
+    document.body.style.display = '';
   };
 
   return (

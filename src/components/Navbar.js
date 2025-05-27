@@ -11,7 +11,6 @@ const Navbar = () => {
 
   // Optimized scroll effect handler
   useEffect(() => {
-    let lastScrollY = window.scrollY;
     let ticking = false;
     
     const updateScrolled = () => {
@@ -20,8 +19,6 @@ const Navbar = () => {
     };
     
     const handleScroll = () => {
-      lastScrollY = window.scrollY;
-      
       if (!ticking) {
         window.requestAnimationFrame(() => {
           updateScrolled();
@@ -67,13 +64,13 @@ const Navbar = () => {
     <header 
       className={`navbar ${scrolled ? 'scrolled' : ''}`}
     >
-      <div className="navbar-container">
+      <div className="navbar-container backdrop-blur">
         <Link to="/" className="logo">
           <span>Issa Habeeb</span>
         </Link>
 
         <div className="nav-right">
-          <nav ref={navRef} className={`nav-links ${isOpen ? 'active' : ''}`}>
+          <nav ref={navRef} className={`nav-links backdrop-blur ${isOpen ? 'active' : ''}`}>
             <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
               Home
             </Link>
@@ -91,6 +88,7 @@ const Navbar = () => {
             className={`mobile-toggle ${isOpen ? 'open' : ''}`} 
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
+            data-blur-target="nav-links"
           >
             <span></span>
             <span></span>

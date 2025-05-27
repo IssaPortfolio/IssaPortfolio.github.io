@@ -14,12 +14,22 @@ import './styles/globals.css';
 
 // ScrollToTop component to handle scroll restoration
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   
   useEffect(() => {
-    // Always scroll to top when pathname changes
-    window.scrollTo(0, 0);
-  }, [pathname]); // Trigger only when pathname changes
+    // Don't scroll to top if we're navigating to a specific hash (like from "Learn More" links)
+    if (!hash) {
+      // Force scroll to top with multiple approaches for reliability
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      
+      // Additional fallback with longer delay
+      setTimeout(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      }, 100);
+    }
+  }, [pathname, hash]); // Trigger when pathname or hash changes
   
   return null;
 }

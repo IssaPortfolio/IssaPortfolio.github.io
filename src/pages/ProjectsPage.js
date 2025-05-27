@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FiGlobe, FiImage, FiGithub } from 'react-icons/fi';
-import { FaMobileAlt } from 'react-icons/fa';
+import { FaMobileAlt, FaLaptopCode } from 'react-icons/fa';
 import { useLocation } from 'react-router-dom';
 import ImageGalleryPopup from '../components/ImageGalleryPopup';
 import TechIcon from '../components/TechIcon';
@@ -98,7 +98,7 @@ const projects = [
     title: 'Employee Tracker',
     image: employeeTrackerImg,
     description: 'The employee tracker app kicks off with a screen displaying roles like software engineers or HR, each with its own image. Users can pick a role, leading them to a detailed page showing the current employee count and individual info. The app simplifies management by allowing users to easily add or remove employees in the selected role, making workforce tracking straightforward. Additionally, there is a button that when clicked, will display all the employees at once, allowing users to efficiently edit information for the entire workforce.',
-    technologies: ['Python', 'Tkinter', 'Turtle', 'JSP', 'HTML5', 'CSS3'],
+    technologies: ['Python', 'Tkinter', 'Turtle', 'HTML5', 'CSS3'],
     githubLink: 'https://github.com/IssaPortfolio/Employee-Tracker',
     completed: 'Fall 2023'
   }
@@ -108,6 +108,24 @@ const ProjectsPage = () => {
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [currentProject, setCurrentProject] = useState(null);
   const location = useLocation();
+  
+  // Handle scrolling to specific project when coming from "Learn More" links
+  useEffect(() => {
+    if (location.hash) {
+      // Small delay to ensure the page has rendered
+      const timer = setTimeout(() => {
+        const element = document.getElementById(location.hash.substring(1));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          element.classList.add('highlight-project');
+          setTimeout(() => {
+            element.classList.remove('highlight-project');
+          }, 2000);
+        }
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [location.hash]);
   
   const openGallery = (project) => {
     setCurrentProject(project);
@@ -171,14 +189,17 @@ const ProjectsPage = () => {
                     id={project.title.replace(/\s+/g, '-').toLowerCase()}
                     className={`project-card glass-card ${project.isMobileApp ? 'has-phone' : ''}`}
                     variants={itemVariants}
+                    style={{ scrollMarginTop: '120px' }} // Account for fixed navbar with proper offset
                   >
                     <div className="card-header">
                       <div className="card-icon-container" style={{ background: project.isMobileApp ? 'rgba(211, 47, 47, 0.15)' : 'rgba(211, 47, 47, 0.15)' }}>
-                      {project.isMobileApp ? (
-                        <FaMobileAlt className="card-icon" style={{ color: '#D32F2F' }} />
-                      ) : (
-                        <FiGlobe className="card-icon" style={{ color: '#D32F2F' }} />
-                      )}
+                        {project.title === 'Employee Tracker' ? (
+                          <FaLaptopCode className="card-icon" style={{ color: '#D32F2F' }} />
+                        ) : project.isMobileApp ? (
+                          <FaMobileAlt className="card-icon" style={{ color: '#D32F2F' }} />
+                        ) : (
+                          <FiGlobe className="card-icon" style={{ color: '#D32F2F' }} />
+                        )}
                       </div>
                       <h3>{project.title}</h3>
                     </div>
@@ -249,7 +270,6 @@ const ProjectsPage = () => {
                           <TechIcon name="Python" />
                           <TechIcon name="Tkinter" />
                           <TechIcon name="Turtle" />
-                          <TechIcon name="JSP" />
                           <TechIcon name="HTML5" />
                           <TechIcon name="CSS3" />
                         </>
