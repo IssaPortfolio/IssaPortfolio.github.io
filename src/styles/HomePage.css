@@ -270,8 +270,11 @@ body, html {
 }
 
 .bio {
-  line-height: 1.7;
-  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  color: var(--foreground);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  text-align: center; /* Center align bio text */
 }
 
 .cta-buttons {
