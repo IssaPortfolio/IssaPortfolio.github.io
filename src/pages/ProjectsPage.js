@@ -209,9 +209,24 @@ const ProjectsPage = () => {
                     </div>
                     
                     <div className="project-description">
-                      {project.description.split('\n\n').map((paragraph, i) => (
-                        <p key={i} style={{ marginBottom: '1rem' }}>{paragraph}</p>
-                      ))}
+                      {project.description.split('\n\n').map((paragraph, i) => {
+                        // Make the first mention of PollApp in the first paragraph clickable
+                        if (project.title === 'PollApp' && i === 0) {
+                          const pollAppIndex = paragraph.indexOf('PollApp');
+                          if (pollAppIndex !== -1) {
+                            const beforeText = paragraph.substring(0, pollAppIndex);
+                            const afterText = paragraph.substring(pollAppIndex + 7);
+                            return (
+                              <p key={i} style={{ marginBottom: '1rem' }}>
+                                {beforeText}
+                                <a href="http://18.117.166.89/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)' }}>PollApp</a>
+                                {afterText}
+                              </p>
+                            );
+                          }
+                        }
+                        return <p key={i} style={{ marginBottom: '1rem' }}>{paragraph}</p>;
+                      })}
                     </div>
                     
                     {project.isMobileApp ? (
@@ -288,6 +303,11 @@ const ProjectsPage = () => {
                           >
                             <FiImage style={{ marginRight: '0.5rem', verticalAlign: 'middle' }} /> View Screenshots
                           </button>
+                          {project.title === 'PollApp' && (
+                            <a href="http://18.117.166.89/" className="btn btn-outline btn-sm" target="_blank" rel="noopener noreferrer">
+                              <FiGlobe style={{ marginRight: '0.5rem', verticalAlign: 'middle' }} /> Visit
+                            </a>
+                          )}
                         </>
                       ) : (
                         <>

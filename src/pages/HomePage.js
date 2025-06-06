@@ -273,7 +273,7 @@ const HomePage = () => {
                 <h3>PollApp</h3>
               </div>
               <p>
-                PollApp is a unique social media platform centered around polls, allowing users to create polls, vote on them, and view the results.
+                <a href="http://18.117.166.89/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)' }}>PollApp</a> is a unique social media platform centered around polls, allowing users to create polls, vote on them, and view the results.
               </p>
               <div className="project-image-container">
                 <img src={pollAppImg} alt="PollApp" className="project-image" />
@@ -294,6 +294,9 @@ const HomePage = () => {
                 <Link to="/projects#pollapp" className="btn btn-sm btn-primary">Learn More</Link>
                 <a href="https://github.com/IssaPortfolio/Poll-App" target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-outline">
                   <FiGithub style={{ marginRight: '0.5rem', verticalAlign: 'middle' }} /> GitHub
+                </a>
+                <a href="http://18.117.166.89/" target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-outline">
+                  <FiGlobe style={{ marginRight: '0.5rem', verticalAlign: 'middle' }} /> Visit
                 </a>
               </div>
             </motion.div>
