@@ -214,6 +214,7 @@ const HomePage = () => {
                   <h4>Bachelor of Science in Computer Science</h4>
                   <p className="education-meta"><FaCalendarAlt size={14} /> Graduated May 2025 | <span className="gpa">GPA: 3.85</span></p>
                   <p className="education-location"><FaMapMarkerAlt size={14} /> Detroit, MI</p>
+                  <p className="education-honor"><FaAward size={14} /> Magna Cum Laude</p>
                   <p className="education-honor"><FaAward size={14} /> Dean's List - All Semesters</p>
                 </div>
               </div>
