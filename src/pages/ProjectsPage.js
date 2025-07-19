@@ -73,7 +73,7 @@ const projects = [
     description: 'Michigan drivers often deal with rough or damaged roads that can\'t be spotted ahead of time. These hidden bumps and potholes can lead to car damage overtime. Since most of these road issues aren\'t marked or updated in regular GPS apps, drivers are left guessing and hoping for a smooth drive. \n\nSmooth Journey is a mobile app designed to solve this problem. It uses two main sources of data: official road condition information from the Southeast Michigan Council of Governments (SEMCOG), and motion data from your phone\'s built-in gyroscope sensor. By combining this sensor data with the SEMCOG maps, the app can show drivers which roads are smooth and which ones to avoid. It also gives better route suggestions by choosing paths with fewer road issues, not just the fastest way.',
     technologies: ['Python', 'Flask', 'PostgreSQL', 'PostGIS', 'Mapbox', 'Swift', 'SwiftUI', 'UIKit', 'Google Cloud'],
     githubLink: 'https://github.com/IssaPortfolio',
-    completed: 'Spring 2024'
+    completed: 'Winter 2025'
   },
   {
     id: 2,
